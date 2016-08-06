@@ -29,7 +29,6 @@
         <% else %>
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Sign Up", new_user_registration_path %></li>
-            <li><%= link_to "Login", new_user_session_path %></li>
             <li><%= link_to "Log In", "#", data: {toggle: 'modal', target: '#myModalForLogIn'} %></li>
           </ul>
         <% end %>
@@ -46,19 +45,20 @@
             <h2 class="modal-title text-center" id="myModalLabel">Log In</h4>
           </div>
           <br />
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          
           <div class="modal-body">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
               <div class="field">
                 <%= f.label :email %><br />
                 <%= f.email_field :email, autofocus: true, class: 'col-xs-12' %>
               </div>
-              <br class="clr"/>
+              <br />
               <br />
               <div class="field">
                 <%= f.label :password %><br />
                 <%= f.password_field :password, autocomplete: "off", class: 'col-xs-12' %>
               </div>
-              <br class="clr"/>
+              <br />
               <br />
               <% if devise_mapping.rememberable? -%>
                 <div class="field">
@@ -66,12 +66,15 @@
                   <%= f.label :remember_me %>
                 </div>
               <% end -%>
-            <br class="clr"/>
+
+              <br />
+              <br />
+
             <%= render "devise/shared/links" %>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <%= f.submit "Log In", class: 'btn btn-primary' %>
+            <%= f.submit "Log in", class: 'btn btn-primary' %>
           </div>
           <% end %>
         </div>
